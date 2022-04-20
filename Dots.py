@@ -4,9 +4,9 @@ import time
 import threading
 
 class Dots:
-    def __init__(self, displayText, doneText, numDots):
-        self.displayText = displayText
-        self.doneText = doneText
+    def __init__(self, startText, stopText, numDots):
+        self.startText = startText
+        self.stopText = stopText
         self.numDots = numDots
         self.loading = False
        
@@ -29,7 +29,7 @@ class Dots:
         while self.loading:
             sys.stdout.write('\033[2K\033[1G')  # clear the line
             sys.stdout.flush()                  # display cleared line
-            sys.stdout.write(self.displayText + ' ' + self.gen_dots(count))  # write text and next spinner character to buffer
+            sys.stdout.write(self.startText + ' ' + self.gen_dots(count) + ' ')  # write text and next spinner character to buffer
             sys.stdout.flush()                  # display text 
             time.sleep(.1)                      # delay 
 
@@ -48,4 +48,4 @@ class Dots:
         self.thread.join()
         sys.stdout.write('\033[2K\033[1G') 
         sys.stdout.flush()
-        sys.stdout.write(self.displayText + ' ... ' + self.doneText + '\n')
+        sys.stdout.write(self.stopText + '\n')
