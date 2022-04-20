@@ -12,6 +12,7 @@ class Dots:
         self.loading = False
        
         self.thread = threading.Thread(target=self.displaySpinner, args=())
+        self.thread.daemon = True
     
     def gen_dots(self, count):
         dots = ''

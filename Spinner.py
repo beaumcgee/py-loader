@@ -12,7 +12,7 @@ class Spinner:
         self.delay = delay 
        
         self.thread = threading.Thread(target=self.displaySpinner, args=())
-        
+        self.thread.daemon = True
 
     def displaySpinner(self):
         spinner = itertools.cycle(['- ', '\\ ', '| ', '/ '])
